@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Books List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <!-- <th>ISBN</th> -->
+            <th>Subject</th>
+            <th>Publisher</th>
+            <th>Language</th>
+            <!-- <th>Pages</th> -->
+            <th>Authors</th>
+            <!-- <th>DonatedBy</th> -->
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books | async">
+            <td>{{book.title}}</td>
+            <!-- <td>{{book.isbn}}</td> -->
+            <td>{{book.subject}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.language}}</td>
+            <!-- <td>{{book.numberOfPages}}</td> -->
+            <td>{{book.authors}}</td>
+            <!-- <td>{{book.donatedBy}}</td> -->
+            <td><button (click)="deleteBook(book.id)" class="btn btn-danger" style="margin-left: 10px">Remove</button>
+                <button (click)="updateBook(book.id)" class="btn btn-success" style="margin-left: 10px">Update</button>
+                <button (click)="viewBook(book.id)" class="btn btn-info" style="margin-left: 10px">View</button>
+                <button (click)="issueBook(book.id)" class="btn btn-info" style="margin-left: 10px">Issue</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
