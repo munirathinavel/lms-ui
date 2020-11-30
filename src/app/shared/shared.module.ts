@@ -31,7 +31,7 @@ import { PieComponent } from './widgets/pie/pie.component';
     MatMenuModule,
     MatListModule,
     RouterModule,
-    HighchartsChartModule
+    HighchartsChartModule,
   ],
   exports: [
     HeaderComponent,

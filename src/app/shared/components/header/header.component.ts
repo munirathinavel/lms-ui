@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthenticationService } from 'src/app/modules/login/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +7,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isLoggedIn = false;
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit() { }
+  ngOnInit(): void {
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    console.log('menu ->' + this.isLoggedIn);
+   }
 
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -20,6 +25,10 @@ export class HeaderComponent implements OnInit {
         new Event('resize')
       );
     }, 300);
+  }
+
+  handleLogout() {
+    this.authenticationService.logout();
   }
 
 }
